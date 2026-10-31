@@ -59,4 +59,10 @@ class DatasetStorage:
         self._store.clear()
         self._counter = 0
         logger.debug("Cleared dataset storage")
-        
+
+
+
+    def update(self, dataset_id: int, df) -> None:
+        """Replace the stored DataFrame for an existing dataset."""
+        self._datasets[dataset_id]["data"] = df.copy()   # adapt to your structure
+        logger.debug("Updated dataset: id=%s, rows=%s", dataset_id, len(df))
